@@ -6,6 +6,7 @@ import api from "@/core/config/api";
 import { toEnglishNumber } from "@/core/utils/number";
 import useGetUserDate from "@/core/services/queries";
 import TourDuration from "@/core/utils/tourDuration";
+import { DatePicker } from "zaman";
 
 export default function PassengerInfoPage() {
   const params = useParams();
@@ -40,7 +41,6 @@ export default function PassengerInfoPage() {
     }));
   };
 
-
   useEffect(() => {
     if (!id) return;
 
@@ -61,8 +61,7 @@ export default function PassengerInfoPage() {
       } catch (err) {
         console.error("Tour fetch error:", err);
         setTourError(
-          err?.response?.data?.message ||
-            "دریافت اطلاعات تور با خطا مواجه شد."
+          err?.response?.data?.message || "دریافت اطلاعات تور با خطا مواجه شد.",
         );
       } finally {
         setTourLoading(false);
@@ -71,7 +70,6 @@ export default function PassengerInfoPage() {
 
     fetchTour();
   }, [id]);
-
 
   useEffect(() => {
     if (!user) return;
@@ -217,11 +215,10 @@ export default function PassengerInfoPage() {
             className="border rounded-lg p-3 outline-none focus:border-blue-500"
           />
 
-          <input
-            type="date"
+          <DatePicker
             value={form.birthDate}
-            onChange={(e) => handleChange("birthDate", e.target.value)}
-            className="border rounded-lg p-3 outline-none focus:border-blue-500"
+            onChange={(e) => handleChange("birthDate", e.value)}
+            inputClass="w-full border rounded-lg p-3 outline-none focus:border-blue-500"
           />
 
           <select
@@ -236,39 +233,34 @@ export default function PassengerInfoPage() {
         </div>
       </div>
 
+      <div className="w-full md:w-1/3 bg-white p-5 border rounded-xl shadow-sm h-fit">
+        <div className="flex justify-between items-center mb-3">
+          <h2 className="text-lg font-bold">{tour?.title}</h2>
 
-<div className="w-full md:w-1/3 bg-white p-5 border rounded-xl shadow-sm h-fit">
-  <div className="flex justify-between items-center mb-3">
-    <h2 className="text-lg font-bold">{tour?.title}</h2>
+          {tour?.startDate && tour?.endDate && (
+            <TourDuration startDate={tour.startDate} endDate={tour.endDate} />
+          )}
+        </div>
 
-    {tour?.startDate && tour?.endDate && (
-      <TourDuration
-        startDate={tour.startDate}
-        endDate={tour.endDate}
-      />
-    )}
-  </div>
+        <div className="border-t border-dashed pt-4 mt-4 flex justify-between items-center">
+          <span className="text-gray-700">قیمت نهایی</span>
+          <span className="text-lg font-bold text-blue-600">
+            {tour?.price ? `${tour.price.toLocaleString("fa-IR")} تومان` : "—"}
+          </span>
+        </div>
 
-  <div className="border-t border-dashed pt-4 mt-4 flex justify-between items-center">
-    <span className="text-gray-700">قیمت نهایی</span>
-    <span className="text-lg font-bold text-blue-600">
-      {tour?.price ? `${tour.price.toLocaleString("fa-IR")} تومان` : "—"}
-    </span>
-  </div>
-
-  <button
-    onClick={handleSubmit}
-    disabled={submitting}
-    className={`w-full mt-5 py-3 rounded-lg text-white transition ${
-      submitting
-        ? "bg-gray-400 cursor-not-allowed"
-        : "bg-green-600 hover:bg-green-700"
-    }`}
-  >
-    {submitting ? "در حال ثبت..." : "ثبت و خرید نهایی"}
-  </button>
-</div>
-
+        <button
+          onClick={handleSubmit}
+          disabled={submitting}
+          className={`w-full mt-5 py-3 rounded-lg text-white transition ${
+            submitting
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700"
+          }`}
+        >
+          {submitting ? "در حال ثبت..." : "ثبت و خرید نهایی"}
+        </button>
+      </div>
     </div>
   );
 }
