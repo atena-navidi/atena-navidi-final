@@ -10,7 +10,7 @@ export default function MyToursPage() {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await api.get("/user/tours"); // مسیر API واقعی را جایگزین کن
+        const response = await api.get("/user/tours"); 
         setTours(response.data);
       } catch (error) {
         console.error("خطا در دریافت تورها:", error.response?.data || error.message);
@@ -28,8 +28,8 @@ export default function MyToursPage() {
     return <div className="p-6 text-gray-500">هنوز توری رزرو نکرده‌اید.</div>;
 
   return (
-    <div className="p-6 space-y-4">
-      <h2 className="text-xl font-semibold mb-4">تورهای من</h2>
+    <div className="border border-black/10 rounded-lg p-2">
+
 
       {tours.map((tour, index) => (
   <div
@@ -56,16 +56,17 @@ export default function MyToursPage() {
           </div>
 
           <div className="text-sm text-gray-600 space-y-1">
+            <p>{tour.title}</p>
             <p>
               <strong>مسیر:</strong> {tour.origin.name} → {tour.destination.name}
             </p>
             <p>
-              <strong>تاریخ رفت:</strong> {new Date(tour.departureDate).toLocaleDateString("fa-IR")}{" "}
+              <strong>تاریخ رفت:</strong> {new Date(tour.startDate).toLocaleDateString("fa-IR")}
               <strong>تاریخ برگشت:</strong>{" "}
-              {new Date(tour.returnDate).toLocaleDateString("fa-IR")}
+              {new Date(tour.endDate).toLocaleDateString("fa-IR")}
             </p>
             <p>
-              <strong>وسیله سفر:</strong> {tour.transport}
+              <strong>وسیله سفر:</strong> {tour.fleetVehicle}
             </p>
             <p>
               <strong>مبلغ پرداخت‌شده:</strong>{" "}
