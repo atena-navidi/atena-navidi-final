@@ -1,35 +1,36 @@
 "use client";
 
 import ModalContainer from "@/components/partials/containers/ModalContainer";
-import React, { use, useState } from "react";
-import SendOTPFrom from "./SendOTPFrom";
+import React, { useState } from "react";
+import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
 
-function AuthForm() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState(1);
+function AuthForm({ isOpen, setIsOpen, step, setStep }) {
   const [mobile, setMobile] = useState("");
-  return (
-    <div>
-      <button className="bg-green-500" onClick={() => setIsOpen(true)}>
-        ورود
-      </button>
 
+  return (
+    <>
       {step === 1 && (
-        <ModalContainer isOpen={isOpen}>
-          <SendOTPFrom
+        <ModalContainer isOpen={isOpen} setIsOpen={setIsOpen}>
+          <SendOTPForm
             mobile={mobile}
             setMobile={setMobile}
             setStep={setStep}
           />
         </ModalContainer>
       )}
+
       {step === 2 && (
-        <ModalContainer isOpen={isOpen}>
-          <CheckOTPForm mobile={mobile} setStep={setStep} setIsOpen={setIsOpen}/>
+        <ModalContainer isOpen={isOpen} setIsOpen={setIsOpen}>
+          <CheckOTPForm
+            mobile={mobile}
+            setMobile={setMobile}
+            setStep={setStep}
+            setIsOpen={setIsOpen}
+          />
         </ModalContainer>
       )}
-    </div>
+    </>
   );
 }
 

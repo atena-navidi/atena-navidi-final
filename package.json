@@ -9,13 +9,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@tanstack/react-query": "^5.100.8",
     "axios": "^1.15.2",
     "input-otp": "^1.4.2",
     "next": "15.5.12",
+    "qs": "^6.15.1",
     "react": "19.1.0",
+    "react-date-object": "^2.1.9",
     "react-dom": "19.1.0",
-    "react-hot-toast": "^2.6.0"
+    "react-hook-form": "^7.75.0",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.6.0",
+    "react-multi-date-picker": "^4.5.2",
+    "yup": "^1.7.1",
+    "zaman": "^2.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
