@@ -123,7 +123,7 @@ export default function Header() {
                   <div className="absolute left-0 w-56 mt-2 bg-white rounded-xl shadow-lg overflow-hidden z-50">
                     <div className="px-4 py-4 flex items-center gap-3 bg-[#F4F4F4]">
                       <Image
-                        src="/icons/profile (2).svg"
+                        src="/icons/profile-(2).svg"
                         width={16}
                         height={16}
                         alt="user icon"
@@ -137,7 +137,7 @@ export default function Header() {
                       className="flex items-center gap-2 px-4 py-3 hover:bg-gray-50 transition"
                     >
                       <Image
-                        src="/icons/profile (1).svg"
+                        src="/icons/profile-(1).svg"
                         width={18}
                         height={18}
                         alt="profile"

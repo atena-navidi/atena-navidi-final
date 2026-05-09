@@ -1,21 +1,13 @@
-/* travel-agency/app/globals.css */
-
 @import "tailwindcss";
 
-/* Register Yekan Bakh font */
 @font-face {
-  font-family: 'Yekan Bakh';
-  src: url('/font/Yekan Bakh Regular.ttf') format('truetype');
+  font-family: "Yekan Bakh";
+  src: url("/font/Yekan Bakh Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-:root {
-  --zaman-accent-color: #28A745; /* رنگ دلخواه */
-}
-
-
 * {
-  font-family: 'Yekan Bakh', sans-serif;
+  font-family: "Yekan Bakh", sans-serif;
 }

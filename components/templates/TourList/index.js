@@ -11,7 +11,6 @@ function TourList({ toursData }) {
 
   return (
     <main className="p-6">
-      
       <h2 className="font-medium text-4xl mb-4">همه تورها</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -56,8 +55,6 @@ function TourList({ toursData }) {
           </div>
         ))}
       </div>
-     
-
     </main>
   );
 }

@@ -1,5 +1,3 @@
-//travel-agency/core/services/http.js
-
 import QueryString from "qs";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -7,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const serverFetch = async (
   endpoint,
   query,
-  cache = { cache: "force-cache" }, // SSG by default
+  cache = { cache: "force-cache" },
 ) => {
   let url = BASE_URL;
   if (endpoint) url += endpoint;

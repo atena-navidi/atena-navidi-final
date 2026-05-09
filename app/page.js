@@ -20,27 +20,27 @@ export default function Home() {
 
   const [searchFilters, setSearchFilters] = useState(null);
 
-const filteredTours = useMemo(() => {
-  if (!searchFilters) return tours; // تا وقتی سرچ نزده، همه تورها را نمایش بده
+  const filteredTours = useMemo(() => {
+    if (!searchFilters) return tours; // تا وقتی سرچ نزده، همه تورها را نمایش بده
 
-  const f = searchFilters;
+    const f = searchFilters;
 
-  return tours.filter((tour) => {
-    if (f.origin && tour.origin.name !== f.origin) return false;
-    if (f.destination && tour.destination.name !== f.destination) return false;
+    return tours.filter((tour) => {
+      if (f.origin && tour.origin.name !== f.origin) return false;
+      if (f.destination && tour.destination.name !== f.destination)
+        return false;
 
-    if (f.startDate && tour.startDate.slice(0, 10) < f.startDate) return false;
-    if (f.endDate && tour.endDate.slice(0, 10) > f.endDate) return false;
+      if (f.startDate && tour.startDate.slice(0, 10) < f.startDate)
+        return false;
+      if (f.endDate && tour.endDate.slice(0, 10) > f.endDate) return false;
 
-    return true;
-  });
-}, [tours, searchFilters]);
-
+      return true;
+    });
+  }, [tours, searchFilters]);
 
   const handleSearch = (f) => {
-  setSearchFilters(f);
-};
-
+    setSearchFilters(f);
+  };
 
   if (isLoading) {
     return <p className="text-center py-10">در حال بارگذاری...</p>;

@@ -143,13 +143,10 @@ export default function PassengerInfoPage() {
         birthDate: form.birthDate,
       };
 
-      // 1) ذخیره اطلاعات در پروفایل کاربر
       await api.put("/user/profile", profilePayload);
 
-      // 2) افزودن تور به سبد
       await api.put(`/basket/${id}`);
 
-      // 3) ثبت سفارش
       await api.post("/order", orderPayload);
 
       router.push("/profile/my-tours");
@@ -181,7 +178,6 @@ export default function PassengerInfoPage() {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4 md:p-6 flex flex-col-reverse md:flex-row gap-6">
-      {/* فرم مشخصات مسافر */}
       <div className="w-full md:w-2/3 bg-white p-5 border rounded-xl shadow-sm">
         <h2 className="text-lg font-bold mb-6">مشخصات مسافر</h2>
 

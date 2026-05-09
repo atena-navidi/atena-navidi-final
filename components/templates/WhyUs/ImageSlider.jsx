@@ -15,21 +15,17 @@ const images = [
 export default function ImageSlider() {
   const [index, setIndex] = useState(0);
 
-  const prev = () =>
-    setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
+  const prev = () => setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
 
-  const next = () =>
-    setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+  const next = () => setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
 
   return (
     <div className="relative w-full flex justify-center">
       <div className="relative w-[320px] h-105">
-
         {images.map((img, i) => {
-          const layer =
-            (i - index + images.length) % images.length;
+          const layer = (i - index + images.length) % images.length;
 
-          if (layer > 3) return null; 
+          if (layer > 3) return null;
 
           return (
             <div
@@ -57,22 +53,22 @@ export default function ImageSlider() {
 
       <div className="absolute -bottom-12 flex items-center gap-6 text-gray-500">
         <button onClick={next}>
-          <Image 
-          src="/icons/arrow-right.svg"
-          width={20}
-          height={20}
-          alt="arrow"
+          <Image
+            src="/icons/arrow-right.svg"
+            width={20}
+            height={20}
+            alt="arrow"
           />
         </button>
-         <span dir="rtl">
+        <span dir="rtl">
           {toPersianNumber(index + 1)} / {toPersianNumber(images.length)}
         </span>
-         <button onClick={prev}>
-          <Image 
-          src="/icons/arrow-left.svg"
-          width={20}
-          height={20}
-          alt="arrow"
+        <button onClick={prev}>
+          <Image
+            src="/icons/arrow-left.svg"
+            width={20}
+            height={20}
+            alt="arrow"
           />
         </button>
       </div>

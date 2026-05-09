@@ -69,7 +69,6 @@ function SendOTPForm({ mobile, setMobile, setStep }) {
 
               setMobile(cleaned);
             }}
-           
           />
         </div>
 

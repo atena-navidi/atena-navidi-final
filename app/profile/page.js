@@ -22,7 +22,6 @@ export default function ProfilePage() {
     setForm(populateForm(user));
   }, [user]);
 
-  // ----------------- Helpers ------------------
   function initialForm() {
     return {
       mobile: "",
@@ -63,7 +62,6 @@ export default function ProfilePage() {
       payment: { ...prev.payment, [key]: value },
     }));
 
-  // ----------------- Validation ------------------
   function validate() {
     if (editingSection === "personal") {
       if (!form.fullName.trim()) return "نام و نام‌خانوادگی را وارد کنید.";
@@ -80,7 +78,6 @@ export default function ProfilePage() {
     return null;
   }
 
-  // ----------------- Submission ------------------
   const updateProfile = async () => {
     const error = validate();
     if (error) {
@@ -108,7 +105,6 @@ export default function ProfilePage() {
 
       await api.put("/user/profile", payload);
 
-      // بازخوانی داده کاربر برای آپدیت فوری
       await queryClient.invalidateQueries(["user"]);
 
       setMessage("✅ اطلاعات با موفقیت ذخیره شد.");
@@ -116,14 +112,13 @@ export default function ProfilePage() {
     } catch (err) {
       console.error("update profile error", err);
       setMessage(
-        err?.response?.data?.message || "❌ خطا در ذخیره اطلاعات کاربران."
+        err?.response?.data?.message || "❌ خطا در ذخیره اطلاعات کاربران.",
       );
     } finally {
       setSaving(false);
     }
   };
 
-  // ----------------- Render ------------------
   if (isLoading) return <p>در حال بارگذاری...</p>;
   if (!user) return <p>کاربر یافت نشد.</p>;
 
@@ -141,7 +136,6 @@ export default function ProfilePage() {
         </div>
       )}
 
-      {/* ================= ACCOUNT INFO ================= */}
       <ProfileSection
         title="اطلاعات حساب کاربری"
         name="account"
@@ -183,7 +177,6 @@ export default function ProfilePage() {
         }
       />
 
-      {/* ================= PERSONAL INFO ================= */}
       <ProfileSection
         title="اطلاعات شخصی"
         name="personal"
@@ -255,7 +248,6 @@ export default function ProfilePage() {
         }
       />
 
-      {/* ================= BANK INFO ================= */}
       <ProfileSection
         title="اطلاعات بانکی"
         name="bank"
@@ -317,8 +309,6 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-// ================== Subcomponents ==================
 
 function ProfileSection({
   title,

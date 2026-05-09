@@ -46,12 +46,7 @@ export default function CustomSelect({
               }}
               className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 cursor-pointer"
             >
-              <Image
-                src="/icons/location.svg"
-                width={18}
-                height={18}
-                alt=""
-              />
+              <Image src="/icons/location.svg" width={18} height={18} alt="" />
               {item}
             </li>
           ))}

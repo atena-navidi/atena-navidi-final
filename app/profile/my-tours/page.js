@@ -10,10 +10,13 @@ export default function MyToursPage() {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await api.get("/user/tours"); 
+        const response = await api.get("/user/tours");
         setTours(response.data);
       } catch (error) {
-        console.error("خطا در دریافت تورها:", error.response?.data || error.message);
+        console.error(
+          "خطا در دریافت تورها:",
+          error.response?.data || error.message,
+        );
       } finally {
         setLoading(false);
       }
@@ -29,13 +32,11 @@ export default function MyToursPage() {
 
   return (
     <div className="border border-black/10 rounded-lg p-2">
-
-
       {tours.map((tour, index) => (
-  <div
-    key={`${tour.id}-${index}`}
-    className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white"
-  >
+        <div
+          key={`${tour.id}-${index}`}
+          className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white"
+        >
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-lg font-medium">{tour.name}</h3>
             <span
@@ -43,25 +44,27 @@ export default function MyToursPage() {
                 tour.status === "done"
                   ? "bg-green-50 text-green-600"
                   : tour.status === "pending"
-                  ? "bg-yellow-50 text-yellow-600"
-                  : "bg-gray-100 text-gray-600"
+                    ? "bg-yellow-50 text-yellow-600"
+                    : "bg-gray-100 text-gray-600"
               }`}
             >
               {tour.status === "done"
                 ? "به اتمام رسیده"
                 : tour.status === "pending"
-                ? "در حال برگزاری"
-                : "رزرو شده"}
+                  ? "در حال برگزاری"
+                  : "رزرو شده"}
             </span>
           </div>
 
           <div className="text-sm text-gray-600 space-y-1">
             <p>{tour.title}</p>
             <p>
-              <strong>مسیر:</strong> {tour.origin.name} → {tour.destination.name}
+              <strong>مسیر:</strong> {tour.origin.name} →{" "}
+              {tour.destination.name}
             </p>
             <p>
-              <strong>تاریخ رفت:</strong> {new Date(tour.startDate).toLocaleDateString("fa-IR")}
+              <strong>تاریخ رفت:</strong>{" "}
+              {new Date(tour.startDate).toLocaleDateString("fa-IR")}
               <strong>تاریخ برگشت:</strong>{" "}
               {new Date(tour.endDate).toLocaleDateString("fa-IR")}
             </p>

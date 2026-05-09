@@ -1,5 +1,3 @@
-// travel-agency/core/services/queries.js
-
 import api from "../config/api";
 import { useQuery } from "@tanstack/react-query";
 
@@ -10,8 +8,8 @@ const useGetUserDate = () => {
   return useQuery({
     queryKey,
     queryFn,
-    retry: false,      
-    staleTime: 0,     
+    retry: false,
+    staleTime: 0,
   });
 };
 

@@ -29,9 +29,7 @@ function SearchTour({ tours = [], filters, setFilters, onSearch }) {
   return (
     <div className="w-full flex justify-center mt-6">
       <div className="bg-white shadow-md rounded-3xl px-4 py-4 flex flex-col md:flex-row items-center gap-6 w-full max-w-4xl">
-
         <div className="flex w-full ">
-
           <div className="flex items-center gap-2 border border-black/20 px-3 py-2 m-1 rounded-2xl md:border-none w-1/2">
             <Image src="/icons/location.svg" width={20} height={20} alt="" />
 
@@ -62,10 +60,8 @@ function SearchTour({ tours = [], filters, setFilters, onSearch }) {
               }
             />
           </div>
-
         </div>
 
-        {/* date */}
         <div className="w-full flex flex-row items-center justify-center border border-black/20 rounded-2xl px-3 py-2 md:w-1/3 md:border-none md:justify-end md:gap-3">
           <div className="flex items-center gap-2 shrink-0">
             <Image src="/icons/calendar.svg" width={20} height={20} alt="" />
@@ -85,7 +81,6 @@ function SearchTour({ tours = [], filters, setFilters, onSearch }) {
           />
         </div>
 
-        {/* search button */}
         <button
           onClick={() => onSearch(filters)}
           className="bg-green-600 text-white font-semibold rounded-2xl py-3 w-full md:w-1/3 px-7 hover:bg-green-700 transition"

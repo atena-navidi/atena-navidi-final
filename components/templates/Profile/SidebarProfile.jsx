@@ -10,8 +10,16 @@ export default function SidebarProfile() {
 
   const menus = [
     { title: "پروفایل", href: "/profile", icon: "/icons/profile.svg" },
-    { title: "تورهای من", href: "/profile/my-tours", icon: "/icons/sun-fog.svg" },
-    { title: "تراکنش‌ها", href: "/profile/transactions", icon: "/icons/convert-card.svg" },
+    {
+      title: "تورهای من",
+      href: "/profile/my-tours",
+      icon: "/icons/sun-fog.svg",
+    },
+    {
+      title: "تراکنش‌ها",
+      href: "/profile/transactions",
+      icon: "/icons/convert-card.svg",
+    },
   ];
 
   return (

@@ -2,12 +2,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import api from "@/core/config/api";
-import  useGetUserData  from "@/core/services/queries";
+import useGetUserData from "@/core/services/queries";
 
 export default function ReserveButton({ tourId }) {
   const router = useRouter();
   const { data: userResponse } = useGetUserData();
-  const user = userResponse?.data?.data || userResponse?.data; 
+  const user = userResponse?.data?.data || userResponse?.data;
   const [loading, setLoading] = useState(false);
 
   const handleReserve = async () => {

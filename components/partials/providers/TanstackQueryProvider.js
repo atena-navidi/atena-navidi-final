@@ -1,5 +1,3 @@
-// travel-agency/components/partials/providers/TanstackQueryProvider.js
-
 "use client";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -7,5 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 export default function TanstackQueryProvider({ children }) {
   const [queryClient] = React.useState(() => new QueryClient());
 
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 }

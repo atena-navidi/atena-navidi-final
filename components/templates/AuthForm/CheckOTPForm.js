@@ -1,13 +1,11 @@
-// travel-agency/components/templates/AuthForm/CheckOTPForm.js
-
 import { useCheckOtp } from "@/core/services/mutations";
 import { useState } from "react";
 
-function CheckOTPForm({ mobile, setStep, setIsOpen , setMobile}) {
+function CheckOTPForm({ mobile, setStep, setIsOpen, setMobile }) {
   const [code, setCode] = useState("");
 
   const { mutate, isPending } = useCheckOtp();
-  
+
   const checkOtpHandler = (e) => {
     e.preventDefault();
     if (isPending) return;
@@ -24,26 +22,21 @@ function CheckOTPForm({ mobile, setStep, setIsOpen , setMobile}) {
       },
     );
   };
-  
+
   return (
     <div className="w-full h-full relative bottom-10">
-      {/* Title - کد تایید را وارد کنید */}
-      <h4 
-        className="absolute left-1/2 -translate-x-1/2 top-[59px] text-[28px] font-semibold text-[#282828] whitespace-nowrap"
-      >
+      <h4 className="absolute left-1/2 -translate-x-1/2 top-[59px] text-[28px] font-semibold text-[#282828] whitespace-nowrap">
         کد تایید را وارد کنید
       </h4>
 
-      {/* Label */}
-      <label 
-        className="absolute right-[30px] top-[138px] text-base font-light text-black"
-      >
+      <label className="absolute right-[30px] top-[138px] text-base font-light text-black">
         کد تایید پیامک شده را وارد کنید
       </label>
 
-      {/* Form */}
-      <form onSubmit={checkOtpHandler} className="absolute left-10 right-10 top-[173px] flex flex-col gap-[41px]">
-        {/* Input */}
+      <form
+        onSubmit={checkOtpHandler}
+        className="absolute left-10 right-10 top-[173px] flex flex-col gap-[41px]"
+      >
         <div className="flex flex-row justify-end items-center p-2 gap-2 bg-white border border-black/25 rounded-md h-[54px]">
           <input
             type="text"
@@ -54,11 +47,9 @@ function CheckOTPForm({ mobile, setStep, setIsOpen , setMobile}) {
           />
         </div>
 
-        {/* Submit Button */}
-        <button 
+        <button
           type="submit"
           className="flex flex-row justify-center items-center p-2 gap-2 bg-[#28A745] border border-black/25 rounded-md h-[54px] text-white text-lg font-medium"
-
         >
           ورود
         </button>

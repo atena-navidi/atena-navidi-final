@@ -1,5 +1,3 @@
-// travel-agency/app/tours/[id]/page.js
-
 import { serverFetch } from "@/core/services/http";
 import Image from "next/image";
 
