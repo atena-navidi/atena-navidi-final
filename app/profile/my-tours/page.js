@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import api from "@/core/config/api";
+import { FaTrain } from "react-icons/fa";
 
 export default function MyToursPage() {
   const [tours, setTours] = useState([]);
@@ -30,16 +32,66 @@ export default function MyToursPage() {
   if (!tours.length)
     return <div className="p-6 text-gray-500">هنوز توری رزرو نکرده‌اید.</div>;
 
+  function getVehicle(vehicle) {
+    const v = vehicle?.toLowerCase();
+
+    if (v === "suv" || v === "bus") {
+      return (
+        <div className="flex items-center gap-2">
+          <Image src="/icons/bus.svg" width={24} height={24} alt="bus" />
+          <span>سفر با اتوبوس</span>
+        </div>
+      );
+    }
+
+    if (v === "airplane") {
+      return (
+        <div className="flex items-center gap-2">
+          <Image
+            src="/icons/airplane.svg"
+            width={24}
+            height={24}
+            alt="airplane"
+          />
+          <span>سفر با هواپیما</span>
+        </div>
+      );
+    }
+
+    if (v === "ship") {
+      return (
+        <div className="flex items-center gap-2">
+          <Image src="/icons/ship.svg" width={24} height={24} alt="ship" />
+          <span>سفر با کشتی</span>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex items-center gap-2">
+        <FaTrain />
+        <span>سفر با قطار</span>
+      </div>
+    );
+  }
+
   return (
     <div className="border border-black/10 rounded-lg p-2">
       {tours.map((tour, index) => (
         <div
           key={`${tour.id}-${index}`}
-          className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white"
+          className="border border-black/20 rounded-lg m-2 bg-white"
         >
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-lg font-medium">{tour.name}</h3>
-            <span
+          <div className="flex items-center justify-between mb-2 p-6">
+            <div className="flex flex-row-reverse items-center gap-2">
+              {tour.title}
+              <Image src="/icons/sun-fog.svg" width={24} height={24} alt="" />
+            </div>
+            <div className="flex items-center gap-2">
+              {getVehicle(tour.fleetVehicle)}
+            </div>
+
+            <div
               className={`text-sm px-3 py-1 rounded ${
                 tour.status === "done"
                   ? "bg-green-50 text-green-600"
@@ -53,29 +105,30 @@ export default function MyToursPage() {
                 : tour.status === "pending"
                   ? "در حال برگزاری"
                   : "رزرو شده"}
-            </span>
+            </div>
           </div>
 
-          <div className="text-sm text-gray-600 space-y-1">
-            <p>{tour.title}</p>
-            <p>
+          <div className="text-sm text-gray-600 space-y-1 p-6">
+            <div>
               <strong>مسیر:</strong> {tour.origin.name} →{" "}
               {tour.destination.name}
-            </p>
-            <p>
+            </div>
+            <div>
               <strong>تاریخ رفت:</strong>{" "}
               {new Date(tour.startDate).toLocaleDateString("fa-IR")}
               <strong>تاریخ برگشت:</strong>{" "}
               {new Date(tour.endDate).toLocaleDateString("fa-IR")}
-            </p>
-            <p>
-              <strong>وسیله سفر:</strong> {tour.fleetVehicle}
-            </p>
-            <p>
-              <strong>مبلغ پرداخت‌شده:</strong>{" "}
+            </div>
+          </div>
+          <div className="border-t border-black/20 p-6 flex flex-row-reverse items-center justify-end gap-3">
+            <div className="p-3 border-r border-black/20 flex gap-2">
+              <p className="text-gray-500">مبلغ پرداخت‌شده:</p>
               {tour.price.toLocaleString("fa-IR")} تومان
-            </p>
-            <p className="text-gray-500">شماره تور: {tour.id}</p>
+            </div>
+            <div className="flex gap-2">
+              <p className="text-gray-500">شماره تور:</p> 
+              {tour.id}
+            </div>
           </div>
         </div>
       ))}
