@@ -1,6 +1,6 @@
 # Tour Booking Platform
 
-A modern **tour booking web application** built with **Next.js**, **React**, and **TypeScript**.  
+A modern **tour booking web application** built with **Next.js**, **React**.  
 This project provides users with an intuitive interface to search, explore, and book tours, while also offering profile management and a smooth Persian-friendly user experience.
 
 ## Features
@@ -9,7 +9,6 @@ This project provides users with an intuitive interface to search, explore, and 
 - Responsive and modern UI for **desktop and mobile**
 - **User profile management** for personal and payment information
 - Reusable and scalable **component-based architecture**
-- **TypeScript** support for better type safety and maintainability
 - **Persian (Jalali) date picker** integration
 - API-ready structure for connecting booking and user data services
 
@@ -17,7 +16,6 @@ This project provides users with an intuitive interface to search, explore, and 
 
 - **Next.js**
 - **React**
-- **TypeScript**
 - **Tailwind CSS**
 - **Axios**
 - **React Multi Date Picker**
@@ -47,7 +45,6 @@ http://localhost:3000
 This project focuses on:
 
 - building a scalable frontend architecture
-- improving maintainability through TypeScript migration
 - creating reusable form and UI components
 - supporting Persian localization features such as Jalali date selection
 
